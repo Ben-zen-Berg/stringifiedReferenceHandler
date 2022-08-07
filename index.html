@@ -1,26 +1,29 @@
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Stringified Nested Reference Handler</title>
-    <script>
-        var printHelloWorld = "app.utils.init('Hello world'))";
-        function init(callback) {
-            callback(printHelloWorld);
-            if (!done) {
-                window.setTimeout(callback, 500, "app.utils.alert(app.themeMng.getRandomGreeting())");
-                var done = true;
+    <head>
+        <meta charset="UTF-8">
+        <title>Stringified Reference Handler - "Hello world" example</title>
+        <script>
+            var printHelloWorld = "app.utils.init('Hello world'))";
+            function init(callback) {
+                callback(printHelloWorld);
+                if (!done) {
+                    window.setTimeout(callback, 500, "app.utils.alert(app.themeMng.getRandomGreeting())");
+                    var done = true;
+                }
+                if (!app.explanation) {
+                    var src = 'js/app/app_explanation.js';
+                    callback("app.utils.load('" + src + "')");
+                }
             }
-            if (!app.explanation) {
-                var src = 'js/app/app_explanation.js';
-                callback("app.utils.load('" + src + "')");
+            function initIfInitiatable() {
+                if (app.stringifiedReferenceHandler && app.themeMng && app.utils && store) {
+                    init(app.stringifiedReferenceHandler.parse);
+                }
             }
-        }
-    </script>
-</head>
-
-<body>
-    <script src="js/app/app_stringifiedReferenceHandler.js"></script>
-    <script src="js/app/app_helloWorld.js"></script>
-</body>
-
+        </script>
+    </head>
+    <body>
+        <script src="js/app/app_stringifiedReferenceHandler.js" onload="initIfInitiatable()"></script>
+        <script src="js/app/app_helloWorld.js" onload="initIfInitiatable()"></script>
+    </body>
 </html>

@@ -174,8 +174,3 @@
         }
     }
 })((window.app = window.app || {}));
-
-
-if (app.themeMng && app.utils && store) {
-    init(app.stringifiedReferenceHandler.parse);
-}

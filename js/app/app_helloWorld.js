@@ -70,7 +70,3 @@ var store = {
         },
     },
 };
-
-if (app.stringifiedReferenceHandler) {
-    init(app.stringifiedReferenceHandler.parse);
-}
