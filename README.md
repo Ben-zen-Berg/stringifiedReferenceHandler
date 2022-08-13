@@ -1,4 +1,6 @@
-The stringifiedReferenceHandler provides a oportunity to reference pointers, getters and calls with (perhaps temporary) values at runtime to objects or methods that may not exist at its definition - and do so as traceably as possible. Of course, it is important that they can be successfully resolved when the referenced object becomes visible. But it is just as important that no exception is thrown if the attempt fails.
+# stringifiedReferenceHandler
+
+The stringifiedReferenceHandler provides an oportunity to reference pointers, getters and calls with (perhaps temporary) values at runtime to objects or methods that may not exist at its definition - and do so as traceably as possible. Of course, it is important that they can be successfully resolved when the referenced object becomes visible. But it is just as important that no exception is thrown if the attempt fails.
 
 If a pointer or call is converted into a string by simply enclosing it in quotes, its mission is perfectly understandable. But the runtime environment cannot interpret it as a pointer/getter/call, which in this case is the perfect protection against null pointer exceptions. If strings contained therein are enclosed in single quotes, the entire literal is JSON-compliant and can also be exchanged via this format.
 
