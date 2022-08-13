@@ -17,3 +17,5 @@ To see how the Stringified Reference Handler works, simply embed the app_stringi
 ![console](https://github.com/Ben-zen-Berg/stringifiedReferenceHandler/blob/main/img/console.jpg)
 
 This proves that the stringifiedReferenceHandler works correctly, but seems unspectacular, as all objects and functions involved are available at runtime. However, the script is designed to store accesses to potentially unavailable objects or functions to allow for later execution - just when they become availibility.
+
+How this works can be demonstrated with a simple 'hello world' example, loaded with the index.html.
