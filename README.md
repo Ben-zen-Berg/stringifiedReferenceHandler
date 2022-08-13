@@ -1,4 +1,4 @@
-# stringifiedReferenceHandler
+# Stringified Reference Handler
 
 The stringifiedReferenceHandler provides an oportunity to reference pointers, getters and calls with (perhaps temporary) values at runtime to objects or methods that may not exist at its definition - and do so as traceably as possible. Of course, it is important that they can be successfully resolved when the referenced object becomes visible. But it is just as important that no exception is thrown if the attempt fails.
 
