@@ -140,7 +140,7 @@
             return arguments;
         },
         /**
-         * getBranch determines the area enclosed by round, square or curly brackets, or by single quotes.
+         * getBranch determines the area enclosed by round, square or curly brackets, or by single quotes
          * @param {array} matches - the chunks of the stringified reference
          * @param {int} index - the pointer to the current chunk
          * @returns an object that contains a stringified partial reference such as strings, objects, calls or arrays and the actualised index
