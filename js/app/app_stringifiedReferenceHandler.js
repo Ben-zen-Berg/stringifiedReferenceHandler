@@ -1,6 +1,11 @@
 (function (app) {
     app.stringifiedReferenceHandler = {
         endings: {"'":"'","[":"]","{":"}","(":")"},
+        /**
+         * parse tries to convert a stringified reference into a valid pointer
+         * @param {string} value - a stringified reference e.g. "Math.PI" or "Math.floor(Math.PI)"
+         * @returns the value of the parsed reference or undefined
+         */
         parse: function (value) {
             if (value.match(/^(true|false)$/)) {
                 return value === 'true';
@@ -68,6 +73,12 @@
             }
             return obj;
         },
+        /**
+         * execute tries to call a previously parsed function
+         * @param {function} method - a former stringified but already parsed function
+         * @param {string} paramString - stringified arguments e.g. "Math.PI, 2.5, 'Perimeter'" or "66"
+         * @returns the value returned by the called function or undefined
+         */
         execute: function (method, paramString) {
             if (typeof method != "function") {
                 return undefined;
@@ -83,6 +94,11 @@
             }
             return method();
         },
+        /**
+         * chunkStringIntoArguments tries to split a string into arguments
+         * @param {string} value a string recognised as arguments for a call or as array content 
+         * @returns an array filled with parameters
+         */
         chunkStringIntoArguments: function (value) {
             var self = app.stringifiedReferenceHandler;
             var regExp = /(['|\\|\.|\,|\(|\)|\[|\]|\{|\}])|([^'|\\|\.|\,|\(|\)|\[|\]|\{|\}]+)/g;
@@ -118,11 +134,17 @@
                 }
             }
             if (str) {
-                var arg = self.parse(str.trim());
+                var arg = self.parse(str);
                 arguments.push(arg);
             }
             return arguments;
         },
+        /**
+         * getBranch determines the area enclosed by round, square or curly brackets, or by single quotes.
+         * @param {array} matches - the chunks of the stringified reference
+         * @param {int} index - the pointer to the current chunk
+         * @returns an object that contains a stringified partial reference such as strings, objects, calls or arrays and the actualised index
+         */
         getBranch: function (matches, index) {
             var depth = 1;
             var str = '';
